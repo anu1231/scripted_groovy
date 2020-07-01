@@ -1,15 +1,9 @@
-node
-{
-stage("build")
-{
-echo "${BUILD_NUMBER}"
-}
-stage("run")
-{
-sh label: '', script: '1.sh'
-}
-stage("Test")
-{
-sh label: '', script: '2.sh'
-}
+node {
+    stage('Example') {
+        if (env.BRANCH_NAME == 'master') {
+            echo 'I only execute on the master branch'
+        } else {
+            echo 'I execute elsewhere'
+        }
+    }
 }
